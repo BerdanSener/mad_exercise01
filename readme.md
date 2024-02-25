@@ -9,13 +9,18 @@
 ## Questions
 ### Describe how Kotlin handles null safety. What are nullable types and non-null types in Kotlin? (0,5 points)
 
-<span style="color:blue">Provide your answer here! </span>
+<span style="color:blue">Provide your answer here!
+
+Kotlin handles null safety through nullable and non-nullable types. Non-nullable can only handle non-null types by default.
+Nullable types can hold null values and it is marked with a ?
+</span>
+```kotlin 
+// nullable type 
+val length = str?.length
+```
+
 > Note: you can also use code snippets to illustrate your answer. 
 
-```kotlin 
-// example code snippet
-val a: String = "value" // non-null type
-```
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
