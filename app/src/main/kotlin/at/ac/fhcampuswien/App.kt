@@ -3,10 +3,14 @@
  */
 package at.ac.fhcampuswien
 
+import kotlin.math.pow
+import kotlin.math.roundToInt
+
 class App {
     // Game logic for a number guessing game
     fun playNumberGame(digitsToGuess: Int = 4) {
         //TODO: build a menu which calls the functions and works with the return values
+        val numbersToGuess = generateRandomNonRepeatingNumber(4)
     }
 
     /**
@@ -25,7 +29,29 @@ class App {
      */
     val generateRandomNonRepeatingNumber: (Int) -> Int = { length ->
         //TODO implement the function
-        0   // return value is a placeholder
+
+        val listOfUsedNumbers: MutableList<Int> = mutableListOf()
+        var randomNumber = 0
+        if (length in 1..9) {
+            var i = 0
+            var rand = 0
+            var generatedNumber = 0.0
+            while (randomNumber.toString().length < length) {
+                do {
+                    generatedNumber = Math.random() * 10
+                    rand = generatedNumber.roundToInt()
+                } while (rand !in 0..9 || (rand in listOfUsedNumbers))
+                randomNumber += rand * 10.0.pow(i).roundToInt()
+                println(randomNumber)
+                listOfUsedNumbers.add(rand)
+                i++
+            }
+
+        }
+        else{
+            throw IllegalArgumentException()
+        }
+        randomNumber   // return value is a placeholder
     }
 
     /**
@@ -52,5 +78,7 @@ class App {
 
 fun main() {
     println("Hello World!")
+    val app = App()
+    app.playNumberGame(digitsToGuess = 4)
     // TODO: call the App.playNumberGame function with and without default arguments
 }
