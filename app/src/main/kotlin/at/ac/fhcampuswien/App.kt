@@ -72,7 +72,31 @@ class App {
      */
     val checkUserInputAgainstGeneratedNumber: (Int, Int) -> CompareResult = { input, generatedNumber ->
         //TODO implement the function
-        CompareResult(0, 0)   // return value is a placeholder
+        val inputStr = input.toString()
+        val generatedStr = generatedNumber.toString()
+
+        if (inputStr.length != generatedStr.length) {
+            throw IllegalArgumentException()
+        }
+
+        var correctDigits = 0
+        var correctPosition = 0
+        var alreadyCheckedNumbers: MutableList<Char> = mutableListOf<Char>()
+
+        for (char in inputStr) {
+            if (generatedStr.contains(char) && char !in alreadyCheckedNumbers) {
+                alreadyCheckedNumbers.add(char)
+                correctDigits++
+            }
+        }
+
+        for (i in inputStr.indices) {
+            if (inputStr[i] == generatedStr[i]) {
+                correctPosition++
+            }
+        }
+
+        CompareResult(correctDigits, correctPosition)
     }
 }
 
